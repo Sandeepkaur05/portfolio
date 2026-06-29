@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sandeep Kaur — Frontend Developer</title>
+<title>Sandeep Kaur — Magento 2 & Frontend Developer</title>
+<meta name="description" content="Sandeep Kaur — Frontend & E-Commerce Developer with 5+ years experience in Magento 2, React, Next.js and WordPress. Available for remote work.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
 
@@ -57,7 +58,9 @@
     background: #D8F3DC; padding: 4px 12px;
     border-radius: 20px; letter-spacing: 0.04em;
     display: flex; align-items: center; gap: 6px;
+    text-decoration: none; transition: opacity 0.2s;
   }
+  .nav-available:hover { opacity: 0.8; }
   .nav-available::before {
     content: ''; width: 6px; height: 6px;
     border-radius: 50%; background: #2D6A4F;
@@ -176,6 +179,33 @@
     border: 1px solid var(--line); color: var(--gray-500);
   }
 
+  /* KOBRAY HIGHLIGHT BOX */
+  .kobray-box {
+    margin-top: 1.25rem; padding: 1.25rem 1.5rem;
+    border: 1.5px solid var(--accent); background: #fdfdf8;
+    position: relative;
+  }
+  .kobray-box-label {
+    position: absolute; top: -10px; left: 16px;
+    background: #fdfdf8; padding: 0 8px;
+    font-size: 0.65rem; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); font-weight: 600;
+  }
+  .kobray-box-title {
+    font-size: 0.9rem; font-weight: 600; margin-bottom: 0.2rem; color: var(--black);
+  }
+  .kobray-box-sub {
+    font-size: 0.72rem; color: var(--gray-500); margin-bottom: 0.75rem; letter-spacing: 0.04em;
+  }
+  .kobray-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .kobray-bullets li {
+    font-size: 0.83rem; color: var(--gray-700);
+    display: flex; gap: 8px; align-items: flex-start;
+  }
+  .kobray-bullets li::before {
+    content: '→'; color: var(--accent); flex-shrink: 0; margin-top: 2px;
+  }
+
   /* PROJECTS */
   .projects-grid {
     display: grid;
@@ -187,14 +217,44 @@
     transition: border-color 0.2s;
   }
   .project-card:hover { border-color: var(--gray-500); }
-  .project-img {
-    width: 100%; height: 180px;
-    background: var(--gray-100);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.75rem; color: var(--gray-500);
-    letter-spacing: 0.06em; text-transform: uppercase;
-    border-bottom: 1px solid var(--line);
+  .project-card.featured { border: 2px solid var(--accent); position: relative; }
+  .project-card.featured::before {
+    content: '★ Latest Client Work';
+    position: absolute; top: -1px; right: -1px;
+    background: var(--accent); color: var(--black);
+    font-size: 0.62rem; letter-spacing: 0.08em;
+    text-transform: uppercase; font-weight: 600;
+    padding: 4px 12px;
   }
+
+  /* Project image placeholders — replaced by real screenshots when available */
+  .project-thumb {
+    width: 100%; height: 180px; object-fit: cover;
+    border-bottom: 1px solid var(--line);
+    display: block;
+  }
+  .project-thumb-placeholder {
+    width: 100%; height: 180px;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 8px;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.72rem; color: var(--gray-500);
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .project-thumb-placeholder .thumb-icon { font-size: 2rem; }
+
+  /* Unique tones per project */
+  .thumb-kobray    { background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); }
+  .thumb-bellavista{ background: linear-gradient(135deg, #f5f0e8 0%, #e8ddd0 100%); color: #8A7A6A; }
+  .thumb-dubai     { background: linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%); }
+  .thumb-ecksand   { background: linear-gradient(135deg, #1a120a 0%, #2e200e 100%); }
+
+  .thumb-kobray .thumb-title    { color: #C8A96E; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .thumb-dubai .thumb-title     { color: #7EB8C9; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .thumb-ecksand .thumb-title   { color: #C8A96E; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .thumb-bellavista .thumb-title{ color: #8A7A6A; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .thumb-kobray .thumb-sub, .thumb-dubai .thumb-sub, .thumb-ecksand .thumb-sub { color: #666888; }
+
   .project-body { padding: 1.5rem; }
   .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 0.75rem; }
   .project-tag {
@@ -221,7 +281,6 @@
     margin-top: 1.5rem; padding: 1.25rem 1.5rem;
     border-left: 2px solid var(--accent);
     font-size: 0.9rem; color: var(--gray-700); line-height: 1.8;
-    border-radius: 0;
   }
   .skill-level-list { list-style: none; }
   .skill-level-item {
@@ -292,13 +351,26 @@
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .nav-links, .nav-available { display: none; }
+    .nav-links { display: none; }
     .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .hero-stats { gap: 2rem; }
   }
 
-  /* ===== CHATBOT WIDGET ===== */
+  /* WHATSAPP */
+  #whatsapp-btn {
+    position: fixed; bottom: 28px; right: 96px; z-index: 998;
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #25D366; color: #fff;
+    border: none; cursor: pointer; text-decoration: none;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: transform 0.25s ease;
+  }
+  #whatsapp-btn:hover { transform: scale(1.07); }
+  #whatsapp-btn svg { width: 26px; height: 26px; }
+
+  /* CHATBOT */
   #chat-toggle {
     position: fixed; bottom: 28px; right: 28px; z-index: 999;
     width: 56px; height: 56px; border-radius: 50%;
@@ -313,33 +385,25 @@
   #chat-toggle .icon-close { display: none; }
   #chat-toggle.open .icon-chat { display: none; }
   #chat-toggle.open .icon-close { display: block; }
-
   #chat-dot {
     position: absolute; top: 2px; right: 2px;
     width: 11px; height: 11px; border-radius: 50%;
     background: #2D6A4F; border: 2px solid var(--white);
   }
-
   #chat-window {
     position: fixed; bottom: 96px; right: 28px; z-index: 999;
     width: 360px; max-width: calc(100vw - 40px);
     height: 480px; max-height: calc(100vh - 160px);
-    background: var(--white);
-    border: 1px solid var(--line);
+    background: var(--white); border: 1px solid var(--line);
     box-shadow: 0 12px 40px rgba(0,0,0,0.14);
     display: flex; flex-direction: column;
     opacity: 0; transform: translateY(16px) scale(0.98);
     pointer-events: none;
     transition: opacity 0.22s ease, transform 0.22s ease;
   }
-  #chat-window.open {
-    opacity: 1; transform: translateY(0) scale(1);
-    pointer-events: all;
-  }
-
+  #chat-window.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: all; }
   #chat-header {
-    padding: 1.1rem 1.25rem;
-    border-bottom: 1px solid var(--line);
+    padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--line);
     display: flex; align-items: center; gap: 12px;
     background: var(--black); color: var(--white);
   }
@@ -360,53 +424,34 @@
     content: ''; width: 6px; height: 6px; border-radius: 50%;
     background: #52C788; flex-shrink: 0;
   }
-
   #chat-messages {
-    flex: 1; overflow-y: auto;
-    padding: 1.25rem; display: flex; flex-direction: column; gap: 14px;
+    flex: 1; overflow-y: auto; padding: 1.25rem;
+    display: flex; flex-direction: column; gap: 14px;
     scroll-behavior: smooth;
   }
   .msg { display: flex; gap: 8px; max-width: 86%; }
   .msg-bot { align-self: flex-start; }
   .msg-user { align-self: flex-end; flex-direction: row-reverse; }
-  .msg-bubble {
-    padding: 0.65rem 0.9rem;
-    font-size: 0.85rem; line-height: 1.6;
-  }
-  .msg-bot .msg-bubble {
-    background: var(--gray-100); color: var(--black);
-    border-radius: 2px 12px 12px 12px;
-  }
-  .msg-user .msg-bubble {
-    background: var(--black); color: var(--white);
-    border-radius: 12px 2px 12px 12px;
-  }
-  .msg-bot .msg-bubble a { color: var(--accent); }
-
-  #chat-suggestions {
-    padding: 0 1.25rem 0.9rem;
-    display: flex; flex-wrap: wrap; gap: 6px;
-  }
+  .msg-bubble { padding: 0.65rem 0.9rem; font-size: 0.85rem; line-height: 1.6; }
+  .msg-bot .msg-bubble { background: var(--gray-100); color: var(--black); border-radius: 2px 12px 12px 12px; }
+  .msg-user .msg-bubble { background: var(--black); color: var(--white); border-radius: 12px 2px 12px 12px; }
+  #chat-suggestions { padding: 0 1.25rem 0.9rem; display: flex; flex-wrap: wrap; gap: 6px; }
   .chip {
     font-size: 0.74rem; padding: 0.4rem 0.8rem;
     border: 1px solid var(--line); background: var(--white);
     color: var(--gray-700); cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
-    white-space: nowrap;
+    transition: border-color 0.2s, color 0.2s; white-space: nowrap;
   }
   .chip:hover { border-color: var(--black); color: var(--black); }
-
   #chat-input-row {
-    border-top: 1px solid var(--line);
-    padding: 0.85rem 1rem;
+    border-top: 1px solid var(--line); padding: 0.85rem 1rem;
     display: flex; gap: 8px; align-items: center;
   }
   #chat-input {
     flex: 1; border: 1px solid var(--line);
     padding: 0.6rem 0.9rem; font-size: 0.83rem;
     font-family: 'Inter', sans-serif; outline: none;
-    transition: border-color 0.2s;
-    background: var(--white); color: var(--black);
+    transition: border-color 0.2s; background: var(--white); color: var(--black);
   }
   #chat-input:focus { border-color: var(--black); }
   #chat-send {
@@ -418,11 +463,9 @@
   }
   #chat-send:hover { background: var(--gray-700); }
   #chat-send svg { width: 15px; height: 15px; }
-
   .typing-dots { display: flex; gap: 3px; padding: 0.3rem 0; }
   .typing-dots span {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--gray-500);
+    width: 6px; height: 6px; border-radius: 50%; background: var(--gray-500);
     animation: typingBounce 1.2s infinite ease-in-out;
   }
   .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
@@ -431,38 +474,10 @@
     0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
     30% { transform: translateY(-4px); opacity: 1; }
   }
-
   @media (max-width: 480px) {
     #chat-window { right: 16px; left: 16px; width: auto; bottom: 92px; }
     #chat-toggle { right: 16px; bottom: 16px; }
-  }
-  /* ===== WHATSAPP FLOATING BUTTON ===== */
-  #whatsapp-toggle {
-    position: fixed; bottom: 28px; right: 96px; z-index: 998;
-    width: 56px; height: 56px; border-radius: 50%;
-    background: #25D366; color: var(--white);
-    border: none; cursor: pointer; text-decoration: none;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
-    transition: transform 0.25s ease;
-  }
-  #whatsapp-toggle:hover { transform: scale(1.07); }
-  #whatsapp-toggle svg { width: 26px; height: 26px; }
-
-  #whatsapp-tooltip {
-    position: fixed; bottom: 40px; right: 162px; z-index: 998;
-    background: var(--black); color: var(--white);
-    font-size: 0.78rem; padding: 0.5rem 0.85rem;
-    white-space: nowrap;
-    opacity: 0; transform: translateX(8px);
-    pointer-events: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-  #whatsapp-toggle:hover ~ #whatsapp-tooltip,
-  #whatsapp-tooltip.show { opacity: 1; transform: translateX(0); }
-
-  @media (max-width: 480px) {
-    #whatsapp-tooltip { display: none; }
+    #whatsapp-btn { right: 84px; bottom: 16px; }
   }
 </style>
 </head>
@@ -475,16 +490,17 @@
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <div class="nav-available">Available for freelance</div>
+  <a href="#contact" class="nav-available">Available for remote work</a>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-label">Frontend Developer — Delhi, India</div>
   <h1>Building fast, <em>beautiful</em><br>web experiences</h1>
-  <p class="hero-sub">5+ years of frontend development experience across Magento 2, React, Next.js, and WordPress. Working with global clients — remotely from Delhi.</p>
+  <p class="hero-sub">5+ years of frontend development across Magento 2, React, Next.js, and WordPress. Working with global clients — remotely from Delhi.</p>
   <div class="hero-actions">
     <a href="#projects" class="btn-primary">View my work</a>
     <a href="#contact" class="btn-outline">Hire me</a>
@@ -512,25 +528,24 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-eyebrow">What I do</div>
-  <h2>Skills & expertise</h2>
+  <h2>Skills &amp; expertise</h2>
   <p class="skills-intro">A full frontend stack — from clean HTML/CSS to React and Next.js, with deep experience in Magento 2 and WordPress e-commerce platforms.</p>
   <div class="skills-grid fade-up">
     <div class="skill-item">
       <div class="skill-cat">Core</div>
       <div class="skill-name">Frontend Development</div>
       <div class="skill-tags">
-        <span class="skill-tag">Magento2</span><span class="skill-tag">HTML5</span>
-        <span class="skill-tag">CSS3</span>
-        <span class="skill-tag">JavaScript</span>
-        <span class="skill-tag">LESS</span>
+        <span class="skill-tag">HTML5</span><span class="skill-tag">CSS3</span>
+        <span class="skill-tag">JavaScript</span><span class="skill-tag">jQuery</span>
+        <span class="skill-tag">Bootstrap</span><span class="skill-tag">LESS</span>
       </div>
     </div>
     <div class="skill-item">
       <div class="skill-cat">Frameworks</div>
-      <div class="skill-name">React & Next.js</div>
+      <div class="skill-name">React &amp; Next.js</div>
       <div class="skill-tags">
         <span class="skill-tag">React.js</span><span class="skill-tag">Next.js</span>
-        <span class="skill-tag">Components</span><span class="skill-tag">Vercel</span><span class="skill-tag">Tailwind CSS</span>
+        <span class="skill-tag">Components</span><span class="skill-tag">Vercel</span>
       </div>
     </div>
     <div class="skill-item">
@@ -538,12 +553,12 @@
       <div class="skill-name">Magento 2</div>
       <div class="skill-tags">
         <span class="skill-tag">Theme Dev</span><span class="skill-tag">CMS Blocks</span>
-        <span class="skill-tag">Extensions</span><span class="skill-tag">LESS</span>
+        <span class="skill-tag">Extensions</span><span class="skill-tag">LESS</span><span class="skill-tag">Porto Theme</span>
       </div>
     </div>
     <div class="skill-item">
       <div class="skill-cat">CMS</div>
-      <div class="skill-name">WordPress & WooCommerce</div>
+      <div class="skill-name">WordPress &amp; WooCommerce</div>
       <div class="skill-tags">
         <span class="skill-tag">WordPress</span><span class="skill-tag">WooCommerce</span>
         <span class="skill-tag">Shopify</span><span class="skill-tag">Drupal</span>
@@ -551,19 +566,19 @@
     </div>
     <div class="skill-item">
       <div class="skill-cat">Backend</div>
-      <div class="skill-name">PHP & MySQL</div>
+      <div class="skill-name">PHP &amp; MySQL</div>
       <div class="skill-tags">
         <span class="skill-tag">PHP</span><span class="skill-tag">MySQL</span>
         <span class="skill-tag">XML</span><span class="skill-tag">XAMPP</span>
       </div>
     </div>
     <div class="skill-item">
-      <div class="skill-cat">Tools</div>
-      <div class="skill-name">Git, Figma & More</div>
+      <div class="skill-cat">Tools &amp; OS</div>
+      <div class="skill-name">Git, Ubuntu &amp; More</div>
       <div class="skill-tags">
-        <span class="skill-tag">Git/GitHub</span><span class="skill-tag">Figma</span>
-        <span class="skill-tag">Canva</span><span class="skill-tag">VS Code</span>
-        <span class="skill-tag">ClickUp</span><span class="skill-tag">Slack</span>
+        <span class="skill-tag">Git/GitHub</span><span class="skill-tag">Ubuntu</span>
+        <span class="skill-tag">VS Code</span><span class="skill-tag">Canva</span>
+        <span class="skill-tag">ClickUp</span><span class="skill-tag">Slack</span><span class="skill-tag">Asana</span>
       </div>
     </div>
   </div>
@@ -576,14 +591,33 @@
   <div class="exp-list fade-up">
 
     <div class="exp-item">
-      <div class="exp-date">Jan 2026 – Present<br><span style="color:var(--accent);font-size:0.72rem">Remote</span></div>
+      <div class="exp-date">Jan 2026 – Present<br><span style="color:var(--accent);font-size:0.72rem">Remote · Worldwide</span></div>
       <div>
-        <div class="exp-company">Freelance</div>
-        <div class="exp-role">Frontend Developer</div>
-        <div class="exp-desc">Working on Magento 2 frontend development and website customisation projects for international clients. Building responsive, user-friendly web pages and performing UI improvements and frontend optimisation.</div>
-        <div class="exp-tags">
+        <div class="exp-company">Self-Employed</div>
+        <div class="exp-role">Independent Magento 2 &amp; Frontend Developer</div>
+        <div class="exp-desc">Delivering Magento 2 frontend customisation projects for international clients — theme development, CMS pages, responsive UI components, bug fixing, and performance optimisation. Working in Ubuntu using VS Code and Git for version control.</div>
+        <div class="kobray-box">
+          <div class="kobray-box-label">★ Featured Contract — Apr–May 2026</div>
+          <div class="kobray-box-title">Kobray — Magento 2 B2B Marketplace <span style="font-size:0.72rem;color:var(--gray-500);font-weight:400;">· Dubai, UAE</span></div>
+          <div class="kobray-box-sub">magento 2 · b2b · frontend customisation</div>
+          <ul class="kobray-bullets">
+            <li>Fixed homepage header &amp; footer layout issues across all breakpoints</li>
+            <li>Resolved full site responsiveness — mobile, tablet, and desktop</li>
+            <li>Overhauled product page UI — improved layout, attribute styling, and visual hierarchy</li>
+            <li>Reduced reported UI issues by ~80% through systematic bug fixing and frontend audit</li>
+            <li>Collaborated remotely via Slack and ClickUp; delivered within agreed timeline</li>
+          </ul>
+          <div class="exp-tags" style="margin-top:1rem;">
+            <span class="exp-tag">Magento 2</span><span class="exp-tag">B2B</span>
+            <span class="exp-tag">HTML5</span><span class="exp-tag">CSS3</span>
+            <span class="exp-tag">JavaScript</span><span class="exp-tag">Bootstrap</span>
+            <span class="exp-tag">Git</span><span class="exp-tag">Ubuntu</span>
+          </div>
+        </div>
+        <div class="exp-tags" style="margin-top:1rem;">
           <span class="exp-tag">Magento 2</span><span class="exp-tag">HTML5</span>
           <span class="exp-tag">CSS3</span><span class="exp-tag">JavaScript</span><span class="exp-tag">Bootstrap</span>
+          <span class="exp-tag">Ubuntu</span><span class="exp-tag">VS Code</span>
         </div>
       </div>
     </div>
@@ -592,24 +626,25 @@
       <div class="exp-date">Feb 2023 – Dec 2025<br><span style="color:var(--accent);font-size:0.72rem">Remote · Urban Pro</span></div>
       <div>
         <div class="exp-company">Urban Pro</div>
-        <div class="exp-role">Web & Computer Instructor</div>
-        <div class="exp-desc">Delivered online training in HTML, CSS, WordPress, MS Office, and Computer Basics. Designed practical assignments and mini-projects focused on responsive web development and helped learners build real-world skills.</div>
+        <div class="exp-role">Web &amp; Computer Instructor</div>
+        <div class="exp-desc">Delivered 200+ personalised online training sessions in HTML, CSS, WordPress, MS Office, and Computer Basics. Designed practical assignments and mini-projects for responsive web development. Built strong client communication skills through consistent remote mentoring.</div>
         <div class="exp-tags">
           <span class="exp-tag">HTML</span><span class="exp-tag">CSS</span>
-          <span class="exp-tag">WordPress</span><span class="exp-tag">Teaching</span>
+          <span class="exp-tag">WordPress</span><span class="exp-tag">Teaching</span><span class="exp-tag">Remote</span>
         </div>
       </div>
     </div>
 
     <div class="exp-item">
-      <div class="exp-date">May 2018 – Nov 2022<br><span style="color:var(--accent);font-size:0.72rem">Remote · Canada</span></div>
+      <div class="exp-date">May 2018 – Nov 2022<br><span style="color:var(--accent);font-size:0.72rem">Remote · Canada · 4+ years</span></div>
       <div>
         <div class="exp-company">Bijoux Ecksand Inc., Canada</div>
         <div class="exp-role">Magento 2 Frontend Developer</div>
-        <div class="exp-desc">Developed and maintained Magento 2 e-commerce websites for a Canadian jewellery brand. Customised Porto child theme, built pixel-perfect pages from design mockups, implemented sliders, popups, and frontend enhancements.</div>
+        <div class="exp-desc">4+ years developing and maintaining Magento 2 e-commerce websites for a Canadian luxury jewellery brand. Customised Porto child theme, built pixel-perfect pages from design mockups, implemented sliders, popups, and CMS enhancements. Managed deployments via Git on Ubuntu.</div>
         <div class="exp-tags">
           <span class="exp-tag">Magento 2</span><span class="exp-tag">LESS</span>
-          <span class="exp-tag">jQuery</span><span class="exp-tag">PHP</span><span class="exp-tag">Git</span>
+          <span class="exp-tag">jQuery</span><span class="exp-tag">PHP</span>
+          <span class="exp-tag">Git</span><span class="exp-tag">Ubuntu</span>
         </div>
       </div>
     </div>
@@ -619,7 +654,7 @@
       <div>
         <div class="exp-company">Flyhi Learning</div>
         <div class="exp-role">WordPress Frontend Developer</div>
-        <div class="exp-desc">Developed and maintained WordPress and WooCommerce websites. Created responsive frontend pages using HTML, CSS, JavaScript, and PHP.</div>
+        <div class="exp-desc">Developed and maintained WordPress and WooCommerce websites with responsive frontend pages using HTML, CSS, JavaScript, and PHP.</div>
         <div class="exp-tags">
           <span class="exp-tag">WordPress</span><span class="exp-tag">WooCommerce</span><span class="exp-tag">PHP</span>
         </div>
@@ -630,10 +665,10 @@
       <div class="exp-date">Aug 2016 – Aug 2017<br><span style="color:var(--accent);font-size:0.72rem">New Delhi</span></div>
       <div>
         <div class="exp-company">Webinnovation Hub</div>
-        <div class="exp-role">Frontend & Backend Developer</div>
-        <div class="exp-desc">Developed and maintained websites using WordPress and PrestaShop CMS. Created frontend features, forms, and website functionality with backend integration.</div>
+        <div class="exp-role">Frontend &amp; Backend Developer</div>
+        <div class="exp-desc">Developed and maintained websites using WordPress and PrestaShop CMS. Built frontend features, forms, and website functionality with backend integration using PHP and MySQL.</div>
         <div class="exp-tags">
-          <span class="exp-tag">WordPress</span><span class="exp-tag">PrestaShop</span><span class="exp-tag">PHP</span>
+          <span class="exp-tag">WordPress</span><span class="exp-tag">PrestaShop</span><span class="exp-tag">PHP</span><span class="exp-tag">MySQL</span>
         </div>
       </div>
     </div>
@@ -646,59 +681,62 @@
   <div class="section-eyebrow">My work</div>
   <h2>Selected projects</h2>
   <div class="projects-grid fade-up">
-    <div class="project-card">
-      <img src="bella-vista.png" alt="Bella Vista Restaurant" 
-      style="width:100%; height:180px; object-fit:cover; border-bottom: 1px solid #E4E4E0;">
+
+    <!-- KOBRAY — replace src with kobray.png once you have the screenshot -->
+    <div class="project-card featured">
+      <img src="kobray.png" alt="Kobray B2B marketplace homepage — Magento 2 frontend work by Sandeep Kaur" class="project-thumb">
       <div class="project-body">
         <div class="project-tags">
-          <span class="project-tag">HTML</span><span class="project-tag">CSS</span>
-          <span class="project-tag">JavaScript</span><span class="project-tag">Netlify</span>
+          <span class="project-tag">Magento 2</span><span class="project-tag">B2B</span>
+          <span class="project-tag">HTML5</span><span class="project-tag">CSS3</span><span class="project-tag">Git</span>
         </div>
-        <div class="project-title">Bella Vista Restaurant </div>
-        <div class="project-desc">Responsive frontend with reusable UI components, mobile-first layouts, deployed on Netlify via GitHub.</div>
-        <a href="https://zippy-paprenjak-6f588a.netlify.app/" target="_blank" class="project-link">Live demo &rarr;</a>
+        <div class="project-title">Kobray — B2B Marketplace Frontend</div>
+        <div class="project-desc">Magento 2 B2B marketplace based in Dubai, UAE. Fixed homepage header/footer, resolved full site responsiveness across all devices, and overhauled product page UI — reducing UI issues by ~80%.</div>
+        <a href="https://kobray.com" target="_blank" rel="noopener noreferrer" class="project-link">View live site &rarr;</a>
       </div>
     </div>
 
+    <!-- BELLA VISTA — replace src with bella-vista.png once you have the screenshot -->
     <div class="project-card">
-      <img src="dubai-mall.png" alt="Luxury Retail" 
-      style="width:100%; height:180px; object-fit:cover; border-bottom: 1px solid #E4E4E0;">
+      <img src="bella-vista.png" alt="Bella Vista restaurant website — responsive HTML CSS JavaScript project by Sandeep Kaur" class="project-thumb">
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag">HTML5</span><span class="project-tag">CSS3</span>
+          <span class="project-tag">JavaScript</span><span class="project-tag">Netlify</span>
+        </div>
+        <div class="project-title">Bella Vista Restaurant</div>
+        <div class="project-desc">Responsive restaurant website with clean UI, mobile-first layout, and smooth navigation. Built with vanilla HTML, CSS, and JavaScript, deployed on Netlify via GitHub.</div>
+        <a href="https://zippy-paprenjak-6f588a.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo &rarr;</a>
+      </div>
+    </div>
+
+    <!-- DUBAI MALL — replace src with dubai-mall.png once you have the screenshot -->
+    <div class="project-card">
+      <img src="dubai-mall.png" alt="Dubai Mall e-commerce frontend — Next.js React project by Sandeep Kaur" class="project-thumb">
       <div class="project-body">
         <div class="project-tags">
           <span class="project-tag">Next.js</span><span class="project-tag">React</span>
-          <span class="project-tag">CSS</span><span class="project-tag">Vercel</span>
+          <span class="project-tag">CSS3</span><span class="project-tag">Vercel</span>
         </div>
         <div class="project-title">Dubai Mall E-Commerce Frontend</div>
-        <div class="project-desc">Responsive e-commerce frontend with reusable UI components, mobile-first layouts, deployed on Vercel via GitHub.</div>
-        <a href="https://dubai-mall-project-phi.vercel.app/" target="_blank" class="project-link">Live demo &rarr;</a>
+        <div class="project-desc">Responsive e-commerce frontend with reusable React components and mobile-first layouts. Deployed on Vercel via GitHub with continuous deployment pipeline.</div>
+        <a href="https://dubai-mall-project-phi.vercel.app/" target="_blank" rel="noopener noreferrer" class="project-link">Live demo &rarr;</a>
       </div>
     </div>
 
+    <!-- ECKSAND — replace src with ecksand.png once you have the screenshot -->
     <div class="project-card">
-      <div class="project-img">Ecksand Jewellery — Magento 2</div>
+      <img src="ecksand.png" alt="Bijoux Ecksand luxury jewellery Magento 2 e-commerce website — 4 years frontend work by Sandeep Kaur" class="project-thumb">
       <div class="project-body">
         <div class="project-tags">
           <span class="project-tag">Magento 2</span><span class="project-tag">LESS</span>
           <span class="project-tag">jQuery</span><span class="project-tag">PHP</span>
         </div>
         <div class="project-title">Bijoux Ecksand — Jewellery Store</div>
-        <div class="project-desc">4+ years of frontend development for a Canadian jewellery brand. Custom Porto theme, CMS blocks, promotions, sliders, and performance optimisation.</div>
-        <a href="https://www.ecksand.com" target="_blank" class="project-link">View site &rarr;</a>
+        <div class="project-desc">4+ years of Magento 2 frontend development for a Canadian luxury jewellery brand. Custom Porto theme, CMS blocks, promotional strips, sliders, and full performance optimisation.</div>
+        <a href="https://www.ecksand.com" target="_blank" rel="noopener noreferrer" class="project-link">View live site &rarr;</a>
       </div>
     </div>
-
-    <!--<div class="project-card">
-      <div class="project-img">Urban Pro Teaching Profile</div>
-      <div class="project-body">
-        <div class="project-tags">
-          <span class="project-tag">HTML</span><span class="project-tag">CSS</span>
-          <span class="project-tag">WordPress</span><span class="project-tag">Teaching</span>
-        </div>
-        <div class="project-title">Online Teaching — Urban Pro</div>
-        <div class="project-desc">Delivered web development and computer courses online. Designed assignments and mini-projects for practical learning across 2+ years.</div>
-        <a href="https://sandeepkaur.urbanpro.com" target="_blank" class="project-link">View profile &rarr;</a>
-      </div>
-    </div>-->
 
   </div>
 </section>
@@ -709,9 +747,9 @@
   <div class="about-grid fade-up">
     <div class="about-text">
       <h2>Frontend developer with a global mindset</h2>
-      <p style="margin-top:1.5rem">I'm Sandeep Kaur, a frontend developer based in Delhi, India with 5+ years of experience building e-commerce websites, responsive UIs, and CMS-based platforms for clients in India and internationally.</p>
-      <p>My core strength is Magento 2 frontend development — I spent 4+ years working remotely for a Canadian jewellery brand, building pixel-perfect, high-performance e-commerce pages. I also work with React, Next.js, WordPress, and WooCommerce.</p>
-      <p>I hold an MCA (Master of Computer Applications) from Maharishi Dayanand University and bring a strong mix of technical skill and teaching experience to every project.</p>
+      <p style="margin-top:1.5rem">I'm Sandeep Kaur, a frontend developer based in Delhi, India with 5+ years of experience building e-commerce websites, responsive UIs, and CMS-based platforms for clients in India, Canada, and the UAE.</p>
+      <p>My core strength is Magento 2 frontend development — I spent 4+ years working remotely for a Canadian luxury jewellery brand, building pixel-perfect, high-performance e-commerce pages. I also work with React, Next.js, WordPress, and WooCommerce.</p>
+      <p>I hold an MCA (Master of Computer Applications) from Maharishi Dayanand University and bring a strong mix of technical skill and remote collaboration experience to every project. I work daily in Ubuntu using VS Code and Git.</p>
       <div class="about-highlight">
         Currently available for remote freelance projects — particularly Magento 2 frontend, React/Next.js development, and WordPress builds.
       </div>
@@ -728,11 +766,11 @@
         </li>
         <li class="skill-level-item">
           <span class="skill-level-name">JavaScript / jQuery</span>
-          <div class="skill-level-bar-wrap"><div class="skill-level-bar" style="width:80%"></div></div>
+          <div class="skill-level-bar-wrap"><div class="skill-level-bar" style="width:70%"></div></div>
         </li>
         <li class="skill-level-item">
           <span class="skill-level-name">React.js / Next.js</span>
-          <div class="skill-level-bar-wrap"><div class="skill-level-bar" style="width:72%"></div></div>
+          <div class="skill-level-bar-wrap"><div class="skill-level-bar" style="width:50%"></div></div>
         </li>
         <li class="skill-level-item">
           <span class="skill-level-name">WordPress / WooCommerce</span>
@@ -744,7 +782,7 @@
         </li>
         <li class="skill-level-item">
           <span class="skill-level-name">Git / GitHub</span>
-          <div class="skill-level-bar-wrap"><div class="skill-level-bar" style="width:78%"></div></div>
+          <div class="skill-level-bar-wrap"><div class="skill-level-bar" style="width:80%"></div></div>
         </li>
       </ul>
     </div>
@@ -767,19 +805,19 @@
           <span class="contact-link-label">Phone</span>
           +91 9205882162
         </a>
-        <a href="https://www.linkedin.com/in/sandeep-kaur-frontend-web-developer" target="_blank" class="contact-link">
+        <a href="https://www.linkedin.com/in/sandeep-kaur-frontend-web-developer" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-label">LinkedIn</span>
           sandeep-kaur-frontend-web-developer
         </a>
-        <a href="https://github.com/Sandeepkaur05" target="_blank" class="contact-link">
+        <a href="https://github.com/Sandeepkaur05" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-label">GitHub</span>
           github.com/Sandeepkaur05
         </a>
-        <a href="https://www.upwork.com/freelancers/~01053296134990714b" target="_blank" class="contact-link">
+        <a href="https://www.upwork.com/freelancers/~01053296134990714b" target="_blank" rel="noopener noreferrer" class="contact-link">
           <span class="contact-link-label">Upwork</span>
-          Available on Upwork
+          Hire me on Upwork
         </a>
-        <a href="#" class="contact-link">
+        <a href="#hero" class="contact-link">
           <span class="contact-link-label">Location</span>
           Delhi, India · Remote worldwide
         </a>
@@ -787,14 +825,13 @@
     </div>
     <form action="https://formspree.io/f/maqzknpl" method="POST">
       <input type="hidden" name="_subject" value="New project enquiry from portfolio">
-      <input type="hidden" name="_next" value="">
       <div class="form-group">
         <label for="name">Your name</label>
-        <input type="text" id="name" name="name" placeholder="John Smith" required>
+        <input type="text" id="name" name="name" placeholder="John Smith" required autocomplete="name">
       </div>
       <div class="form-group">
         <label for="email">Email address</label>
-        <input type="email" id="email" name="_replyto" placeholder="john@company.com" required>
+        <input type="email" id="email" name="_replyto" placeholder="john@company.com" required autocomplete="email">
       </div>
       <div class="form-group">
         <label for="project">Tell me about your project</label>
@@ -802,7 +839,6 @@
       </div>
       <button type="submit" class="form-btn">Send message &rarr;</button>
     </form>
-
   </div>
 </section>
 
@@ -810,81 +846,94 @@
 <footer>
   <p>&copy; 2026 Sandeep Kaur. All rights reserved.</p>
   <div class="footer-links">
-    <a href="https://github.com/Sandeepkaur05" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/sandeep-kaur-frontend-web-developer" target="_blank">LinkedIn</a>
-    <a href="https://dubai-mall-project-phi.vercel.app/" target="_blank">Live Project</a>
+    <a href="https://github.com/Sandeepkaur05" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="https://www.linkedin.com/in/sandeep-kaur-frontend-web-developer" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://www.upwork.com/freelancers/~01053296134990714b" target="_blank" rel="noopener noreferrer">Upwork</a>
   </div>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-</script>
-
-<!-- ===== WHATSAPP BUTTON ===== -->
-<a id="whatsapp-toggle" href="https://wa.me/919205882162?text=Hi%20Sandeep%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project." target="_blank" aria-label="Chat on WhatsApp">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.6-13.58zm-5.55 12.2h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 12.27-3.5 6.56 6.56 0 0 1-6.67 6.6zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.32-.1-.45.1-.13.2-.51.64-.63.77-.12.13-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.36.1-.12.13-.2.2-.34.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.6s.7 1.86.8 1.99c.1.13 1.37 2.1 3.33 2.94.46.2.83.32 1.11.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.08-.18-.13-.38-.23z"/></svg>
+<!-- WHATSAPP -->
+<a id="whatsapp-btn"
+   href="https://wa.me/919205882162?text=Hi%20Sandeep%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project."
+   target="_blank" rel="noopener noreferrer"
+   aria-label="Chat with Sandeep on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.9 11.9L4 20l4.2-1.1a7.93 7.93 0 0 0 3.85 1h.01a7.94 7.94 0 0 0 5.6-13.58zm-5.55 12.2h-.01a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.6 6.6 0 1 1 12.27-3.5 6.56 6.56 0 0 1-6.67 6.6zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.32-.1-.45.1-.13.2-.51.64-.63.77-.12.13-.23.15-.43.05a5.4 5.4 0 0 1-1.6-.99 6 6 0 0 1-1.1-1.37c-.12-.2 0-.3.09-.4.09-.1.2-.24.3-.36.1-.12.13-.2.2-.34.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.62-1.48-.16-.39-.33-.34-.45-.34h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.6s.7 1.86.8 1.99c.1.13 1.37 2.1 3.33 2.94.46.2.83.32 1.11.41.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.08-.18-.13-.38-.23z"/>
+  </svg>
 </a>
 
-<!-- ===== CHATBOT WIDGET ===== -->
-<button id="chat-toggle" aria-label="Open chat">
-  <span id="chat-dot"></span>
-  <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-  <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+<!-- CHATBOT -->
+<button id="chat-toggle" aria-label="Open portfolio chat assistant" aria-expanded="false">
+  <span id="chat-dot" aria-hidden="true"></span>
+  <svg class="icon-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+  </svg>
+  <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+  </svg>
 </button>
 
-<div id="chat-window">
+<div id="chat-window" role="dialog" aria-label="Chat with Sandeep's portfolio assistant">
   <div id="chat-header">
-    <div id="chat-avatar">SK</div>
+    <div id="chat-avatar" aria-hidden="true">SK</div>
     <div id="chat-header-text">
       <div id="chat-header-name">Sandeep Kaur</div>
       <div id="chat-header-status">Usually replies within 24 hours</div>
     </div>
   </div>
-  <div id="chat-messages"></div>
-  <div id="chat-suggestions">
-    <div class="chip" data-q="What services do you offer?">Services</div>
-    <div class="chip" data-q="What is your hourly rate?">Rate</div>
-    <div class="chip" data-q="Have you worked with international clients?">Experience</div>
-    <div class="chip" id="chip-whatsapp">Chat on WhatsApp</div>
+  <div id="chat-messages" aria-live="polite" aria-label="Chat messages"></div>
+  <div id="chat-suggestions" aria-label="Quick question suggestions">
+    <button class="chip" data-q="What services do you offer?">Services</button>
+    <button class="chip" data-q="What is your hourly rate?">Rate</button>
+    <button class="chip" data-q="Have you worked with international clients?">Experience</button>
+    <button class="chip" id="chip-whatsapp">Chat on WhatsApp</button>
   </div>
   <div id="chat-input-row">
-    <input type="text" id="chat-input" placeholder="Ask me anything..." autocomplete="off">
+    <input type="text" id="chat-input" placeholder="Ask me anything..." autocomplete="off" aria-label="Type your question">
     <button id="chat-send" aria-label="Send message">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="22" y1="2" x2="11" y2="13"/>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+      </svg>
     </button>
   </div>
 </div>
 
-  <script>
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Chatbot
   (function() {
-    // ---- Knowledge base about Sandeep — edit this to update chatbot answers ----
     const KB = {
       greeting: "Hi! I'm Sandeep's portfolio assistant. Ask me about her skills, experience, rates, or projects — happy to help!",
-      services: "Sandeep specialises in Magento 2 frontend development, WordPress & WooCommerce, and React/Next.js applications. She also does Figma-to-HTML conversion, landing pages, and website bug fixes.",
-      rate: "Sandeep's standard rate is $15-20/hr for most frontend projects, with fixed pricing available depending on project scope. Feel free to reach out for a custom quote!",
-      experience: "Yes — Sandeep worked remotely for 4+ years as a Magento 2 Frontend Developer for Bijoux Ecksand Inc., a jewellery brand based in Canada. She has 5+ years of total experience across Magento, WordPress, and React/Next.js projects.",
-      contact: "You can reach Sandeep directly at sdeep.info@gmail.com, message on WhatsApp at +91 92058 82162, or use the contact form below on this page. She typically replies within 24 hours!",
-      skills: "Core skills include HTML5, CSS3, JavaScript, jQuery, Bootstrap, LESS, React.js, Next.js, Magento 2, WordPress, WooCommerce, PHP, MySQL, Figma, and Git.",
-      projects: "Check out the Projects section above — Dubai Mall (Next.js e-commerce), Bella Vista Restaurant (HTML/CSS/JS), and Bijoux Ecksand (Magento 2 for a Canadian jewellery brand).",
+      services: "Sandeep specialises in Magento 2 frontend development, WordPress & WooCommerce, and React/Next.js applications. She also handles Figma-to-HTML conversion, landing pages, and website bug fixes.",
+      rate: "Sandeep's standard rate starts at $25–35/hr for Magento 2 projects, with fixed pricing available depending on scope. Feel free to reach out for a custom quote!",
+      experience: "Yes — Sandeep worked remotely for 4+ years as a Magento 2 Frontend Developer for Bijoux Ecksand Inc., a luxury jewellery brand in Canada. Most recently she completed a contract for Kobray, a B2B marketplace in Dubai. She has 5+ years of total experience.",
+      contact: "You can reach Sandeep at sdeep.info@gmail.com, WhatsApp +91 92058 82162, or use the contact form on this page. She typically replies within 24 hours!",
+      skills: "Core skills: HTML5, CSS3, JavaScript, jQuery, Bootstrap, LESS, React.js, Next.js, Magento 2, WordPress, WooCommerce, PHP, MySQL, Git, Ubuntu, and VS Code.",
+      projects: "Check out the Projects section — Kobray (Magento 2 B2B, Dubai), Dubai Mall (Next.js e-commerce), Bella Vista Restaurant (HTML/CSS/JS), and Bijoux Ecksand (Magento 2, Canada).",
       education: "Sandeep holds an MCA (Master of Computer Applications) from Maharishi Dayanand University, Rohtak.",
-      location: "Sandeep is based in Delhi, India, and works remotely with clients across any timezone — including past experience working with a Canadian client.",
-      default: "I don't have a specific answer for that, but you can ask about Sandeep's services, rates, experience, skills, or how to get in touch — or use the contact form above for anything else!"
+      location: "Sandeep is based in Delhi, India, and works fully remote with clients across any timezone.",
+      magento: "Magento 2 is Sandeep's strongest skill — she has 5+ years of hands-on experience with theme customisation, CMS blocks, Porto child theme, Magento extensions, and frontend performance work.",
+      default: "I don't have a specific answer for that, but you can ask about Sandeep's services, rates, experience, skills, or how to get in touch!"
     };
 
-    function getReply(question) {
-      const q = question.toLowerCase();
-      if (/service|offer|what.*do|specializ|specialis/.test(q)) return KB.services;
-      if (/rate|price|cost|charge|hourly|budget/.test(q)) return KB.rate;
-      if (/international|canada|abroad|worked with|client/.test(q)) return KB.experience;
-      if (/contact|reach|email|phone|get in touch/.test(q)) return KB.contact;
-      if (/skill|tech|stack|know|magento|react|wordpress|next/.test(q)) return KB.skills;
-      if (/project|portfolio|work|example|built/.test(q)) return KB.projects;
-      if (/education|degree|study|mca|college|university/.test(q)) return KB.education;
-      if (/location|based|where|delhi|india|timezone/.test(q)) return KB.location;
-      if (/hi|hello|hey/.test(q)) return KB.greeting;
+    function getReply(q) {
+      const t = q.toLowerCase();
+      if (/hi|hello|hey/.test(t)) return KB.greeting;
+      if (/service|offer|what.*do|speciali/.test(t)) return KB.services;
+      if (/rate|price|cost|charge|hourly|budget/.test(t)) return KB.rate;
+      if (/international|canada|dubai|abroad|client/.test(t)) return KB.experience;
+      if (/contact|reach|email|phone|touch/.test(t)) return KB.contact;
+      if (/magento/.test(t)) return KB.magento;
+      if (/skill|tech|stack|know|react|wordpress|next/.test(t)) return KB.skills;
+      if (/project|portfolio|work|example|built/.test(t)) return KB.projects;
+      if (/edu|degree|study|mca|college|university/.test(t)) return KB.education;
+      if (/location|based|where|delhi|india|timezone/.test(t)) return KB.location;
       return KB.default;
     }
 
@@ -892,11 +941,10 @@
     const win = document.getElementById('chat-window');
     const messages = document.getElementById('chat-messages');
     const input = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('chat-send');
     const dot = document.getElementById('chat-dot');
     let opened = false;
 
-    function addMessage(text, sender) {
+    function addMsg(text, sender) {
       const msg = document.createElement('div');
       msg.className = 'msg msg-' + sender;
       const bubble = document.createElement('div');
@@ -908,58 +956,48 @@
     }
 
     function showTyping() {
-      const msg = document.createElement('div');
-      msg.className = 'msg msg-bot';
-      msg.id = 'typing-indicator';
-      msg.innerHTML = '<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
-      messages.appendChild(msg);
+      const el = document.createElement('div');
+      el.className = 'msg msg-bot'; el.id = 'typing-indicator';
+      el.innerHTML = '<div class="msg-bubble"><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+      messages.appendChild(el);
       messages.scrollTop = messages.scrollHeight;
     }
 
-    function removeTyping() {
-      const el = document.getElementById('typing-indicator');
-      if (el) el.remove();
-    }
-
-    function handleSend(text) {
-      const question = text.trim();
-      if (!question) return;
-      addMessage(question, 'user');
+    function send(text) {
+      if (!text.trim()) return;
+      addMsg(text.trim(), 'user');
       input.value = '';
       showTyping();
       setTimeout(() => {
-        removeTyping();
-        addMessage(getReply(question), 'bot');
-      }, 650 + Math.random() * 500);
+        const el = document.getElementById('typing-indicator');
+        if (el) el.remove();
+        addMsg(getReply(text), 'bot');
+      }, 650 + Math.random() * 400);
     }
 
     toggle.addEventListener('click', () => {
       opened = !opened;
       toggle.classList.toggle('open', opened);
+      toggle.setAttribute('aria-expanded', opened);
       win.classList.toggle('open', opened);
       if (opened) {
         dot.style.display = 'none';
-        if (!messages.hasChildNodes()) {
-          setTimeout(() => addMessage(KB.greeting, 'bot'), 300);
-        }
+        if (!messages.hasChildNodes()) setTimeout(() => addMsg(KB.greeting, 'bot'), 300);
         input.focus();
       }
     });
 
-    sendBtn.addEventListener('click', () => handleSend(input.value));
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') handleSend(input.value);
-    });
+    document.getElementById('chat-send').addEventListener('click', () => send(input.value));
+    input.addEventListener('keydown', e => { if (e.key === 'Enter') send(input.value); });
 
     document.querySelectorAll('.chip[data-q]').forEach(chip => {
-      chip.addEventListener('click', () => handleSend(chip.dataset.q));
+      chip.addEventListener('click', () => send(chip.dataset.q));
     });
 
     document.getElementById('chip-whatsapp').addEventListener('click', () => {
-      const msg = encodeURIComponent("Hi Sandeep, I found your portfolio and I'd like to talk about a project.");
-      window.open('https://wa.me/919205882162?text=' + msg, '_blank');
+      window.open('https://wa.me/919205882162?text=Hi%20Sandeep%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20talk%20about%20a%20project.', '_blank');
     });
   })();
-  </script>
+</script>
 </body>
 </html>
